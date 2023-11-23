@@ -1,7 +1,5 @@
 @extends('layouts.main')
 
-@dump($comics)
-
 @section('content')
     <h1>Comics - Index</h1>
     <table class="table table-success table-striped">
@@ -14,8 +12,6 @@
                 <th scope="col">Prezzo</th>
                 <th scope="col">Data di vendita</th>
                 <th scope="col">Info</th>
-
-
             </tr>
         </thead>
         <tbody>
