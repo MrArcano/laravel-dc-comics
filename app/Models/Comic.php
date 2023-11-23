@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Comic extends Model
 {
     use HasFactory;
-    private static function generateSlug($string){
+    public static function generateSlug($string){
         // genero il mio slug
         $slug = Str::slug($string, '-');
         $origina_slug = $slug;
