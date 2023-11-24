@@ -23,9 +23,16 @@
                     <td>{{ $comic->type }}</td>
                     <th>{{ $comic->price }}</th>
                     <td>{{ $comic->sale_date }}</td>
-                    <td><a href="{{ route('comics.show',['comic' => $comic->slug])}}" class="btn btn-success"><i class="fa-solid fa-info"></i></a></td>
+                    <td>
+                        <a class="btn btn-success" href="{{ route('comics.show',['comic' => $comic->slug])}}" ><i class="fa-solid fa-info"></i></a>
+                        <a class="btn btn-primary" href="{{ route('comics.edit',['comic' => $comic->slug]) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div class="bg-secondary">
+        {{ $comics->links() }}
+    </div>
 @endsection
