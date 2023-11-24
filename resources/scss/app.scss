@@ -1,1 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
+
+.pagination{
+    --bs-pagination-color: #fff;
+    --bs-pagination-bg: #212529;
+    --bs-pagination-border-color: #fff;
+
+    --bs-pagination-active-color: #000;
+    --bs-pagination-active-bg: #fff;
+    --bs-pagination-active-border-color: #fff;
+
+    --bs-pagination-disabled-color: #fff;
+    --bs-pagination-disabled-bg: rgb(55, 60, 65);
+    --bs-pagination-disabled-border-color: #fff;
+
+    --bs-pagination-hover-color: #000;
+    --bs-pagination-hover-bg: #fff;
+    --bs-pagination-hover-border-color: #fff;
+
+}

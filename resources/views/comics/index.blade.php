@@ -1,12 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
+    <h1 class="text-center mb-3">Comics - Index</h1>
+
     @if (session('deleted'))
         <div class="alert alert-success" role="alert">
             {{ session('deleted') }}
         </div>
     @endif
-    <h1>Comics - Index</h1>
+
     <table class="table table-success table-striped">
         <thead>
             <tr>
@@ -38,7 +40,7 @@
         </tbody>
     </table>
 
-    <div class="bg-secondary">
+    <div class="">
         {{ $comics->links() }}
     </div>
 @endsection
