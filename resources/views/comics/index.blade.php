@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
+    @if (session('deleted'))
+        <div class="alert alert-success" role="alert">
+            {{ session('deleted') }}
+        </div>
+    @endif
     <h1>Comics - Index</h1>
     <table class="table table-success table-striped">
         <thead>
@@ -25,7 +30,7 @@
                     <td>{{ $comic->sale_date }}</td>
                     <td>
                         <a class="btn btn-success" href="{{ route('comics.show',['comic' => $comic->slug])}}" ><i class="fa-solid fa-info"></i></a>
-                        <a class="btn btn-primary" href="{{ route('comics.edit',['comic' => $comic->slug]) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a class="btn btn-warning" href="{{ route('comics.edit',['comic' => $comic->slug]) }}"><i class="fa-regular fa-pen-to-square"></i></a>
                         @include('partials.form-delete')
                     </td>
                 </tr>

@@ -135,6 +135,6 @@ class ComicsController extends Controller
         $comic = Comic::where('slug', $slug)->first();
         $comic->delete();
 
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.index')->with('deleted',"Hai eliminato $comic->title !");
     }
 }
