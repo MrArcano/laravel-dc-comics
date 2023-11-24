@@ -26,6 +26,7 @@
                     <td>
                         <a class="btn btn-success" href="{{ route('comics.show',['comic' => $comic->slug])}}" ><i class="fa-solid fa-info"></i></a>
                         <a class="btn btn-primary" href="{{ route('comics.edit',['comic' => $comic->slug]) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                        @include('partials.form-delete')
                     </td>
                 </tr>
             @endforeach

@@ -9,7 +9,12 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">#{{$comic->id}} | {{ $comic->title }} | {{ $comic->sale_date}}</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title">#{{$comic->id}} | {{ $comic->title }} | {{ $comic->sale_date}}</h5>
+                        <div>
+                            <a class="btn btn-warning" href="{{ route('comics.edit',['comic' => $comic->slug]) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                        </div>
+                    </div>
                     <p class="card-text">
                         {!!$comic->description!!}
                     </p>
