@@ -66,22 +66,26 @@ class ComicsController extends Controller
     public function show($slug)
     {
         $comics = Comic::all();
-        dd($comics[0]);
-        $comic = Comic::where('slug', $slug)->first();
-        $id = $comic->id;
+        foreach ($comics as $index => $comic) {
+            if( $comic->slug == $slug ) {
+                $id = $index;
+            }
+        }
+
+        $num_comics = count($comics);
+        // dump('num_comics: '.$num_comics);
 
         $id_next = $id + 1;
-        if($id_next > Comic::count()) $id_next = 1;
-        $next = Comic::where('id', $id_next)->first();
-        $next_slug = $next->slug;
+        if($id_next > $num_comics - 1) $id_next = 0;
+        $next_slug = $comics[$id_next]->slug;
 
         $id_prev = $id - 1;
-        if($id_prev < 1) $id_prev = Comic::count();
-        $prev = Comic::where('id', $id_prev)->first();
+        if($id_prev < 0) $id_prev = $num_comics - 1;
+        $prev_slug = $comics[$id_prev]->slug;
 
-        // dd($id , $id_next , $id_prev);
+        // dump('id: ' .$id . ' - prev: ' . $id_prev . ' - next: ' .  $id_next);
 
-        $prev_slug = $prev->slug;
+        $comic = $comics[$id];
 
         return view('comics.show', compact('comic','next_slug','prev_slug'));
     }
@@ -109,7 +113,7 @@ class ComicsController extends Controller
     {
 
         $edit_comic = $request->all();
-        if($edit_comic['slug'] !== $comic->slug)
+        if($edit_comic['title'] !== $comic->title)
         {
             $edit_comic['slug'] = Comic::generateSlug($edit_comic['title']);
         }else{

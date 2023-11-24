@@ -12,6 +12,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="card-title">#{{$comic->id}} | {{ $comic->title }} | {{ $comic->sale_date}}</h5>
                         <div>
+                            @include('partials.form-delete')
                             <a class="btn btn-warning" href="{{ route('comics.edit',['comic' => $comic->slug]) }}"><i class="fa-regular fa-pen-to-square"></i></a>
                         </div>
                     </div>
