@@ -23,7 +23,7 @@
                     <td>{{ $comic->type }}</td>
                     <th>{{ $comic->price }}</th>
                     <td>{{ $comic->sale_date }}</td>
-                    <td><a href="{{ route('comics.show',$comic->slug)}}" class="btn btn-success"><i class="fa-solid fa-info"></i></a></td>
+                    <td><a href="{{ route('comics.show',['comic' => $comic->slug])}}" class="btn btn-success"><i class="fa-solid fa-info"></i></a></td>
                 </tr>
             @endforeach
         </tbody>

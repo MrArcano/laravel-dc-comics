@@ -60,24 +60,22 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($string)
+    public function show($slug)
     {
-        $array = (explode(' ',$string));
-        $old_comic = Comic::where('slug', $array[0])->first();
-        $id= $old_comic->id;
-        $comic = $old_comic;
+        $comic = Comic::where('slug', $slug)->first();
+        $id = $comic->id;
 
-        // controllo se esiste un un secondo elemento nell'array
-        if(!empty($array[1])){
-            if($array[1] === 'next'){
-                if($id === Comic::count()) $id = 0;
-                $comic = Comic::where('id', $id + 1)->first();
-            }elseif($array[1] === 'prev'){
-                if($id === 1) $id = Comic::count() + 1;
-                $comic = Comic::where('id', $id - 1)->first();
-            }
-        }
-        return view('comics.show', compact('comic'));
+        $id_next = $id + 1;
+        if($id_next > Comic::count()) $id_next = 1;
+        $next = Comic::where('id', $id_next)->first();
+        $next_slug = $next->slug;
+
+        $id_prev = $id - 1;
+        if($id_prev < 1) $id_prev = Comic::count();
+        $prev = Comic::where('id', $id_prev)->first();
+        $prev_slug = $prev->slug;
+
+        return view('comics.show', compact('comic','next_slug','prev_slug'));
     }
 
     /**

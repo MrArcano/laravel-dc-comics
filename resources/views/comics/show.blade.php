@@ -38,8 +38,8 @@
         </div>
     </div>
     <span class=" text-bg-primary rounded p-3 d-flex justify-content-end gap-2">
-        <a href="{{ route('comics.show', $comic->slug.' prev') }}" class="btn btn-dark"><</a>
-        <a href="{{ route('comics.show', $comic->slug.' next') }}" class="btn btn-dark">></a>
+        <a href="{{ route('comics.show', ['comic' => $prev_slug] ) }}" class="btn btn-dark"><</a>
+        <a href="{{ route('comics.show', ['comic' => $next_slug ] ) }}" class="btn btn-dark">></a>
     </span>
 
 @endsection
